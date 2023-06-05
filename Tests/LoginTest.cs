@@ -1,22 +1,18 @@
-﻿using System;
-using Framework;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using Tests.BaseTests;
 
 namespace Tests
 {
-    public class ClientLoginTest
+    public class ClientLoginTest : BaseTest
     {
         [Test]
         public void ClientLogin()
         {
-            Framework.Pages.HomePage homePage = new Framework.Pages.HomePage(driver);
-            Framework.Pages.LoginPage loginPage = homePage.NavigateToLoginPage();
-            loginPage.FillLoginForm("johndoe@example.com", "password123");
-            loginPage.ClickLoginButton();
-
-            Assert.IsTrue(loginPage.IsLoginSuccessful());
+            LoginPage.Open();
+            LoginPage.FillLoginForm("johndoe@example.com", "password123");
+            LoginPage.ClickLoginButton();
+            Assert.IsTrue(LoginPage.IsLoginSuccessful());
         }
-
     }
 }
-

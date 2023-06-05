@@ -1,24 +1,19 @@
-﻿using System;
-using Framework;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using Tests.BaseTests;
 
 namespace Tests
 {
-    public class ClientRegistrationTest
+    public class ClientRegistrationTest : BaseTest
     {
         [Test]
         public void ClientRegistration()
         {
-            HomePage homePage = new HomePage(driver);
-            RegistrationPage registrationPage = homePage.NavigateToRegistrationPage();
-            registrationPage.FillRegistrationForm("Vardenis", "Pavardenis", "VardenisP@example.com", "1234567890", "password123");
-            registrationPage.AcceptTermsAndConditions();
-            registrationPage.ClickRegistrationButton();
-
-          
-            Assert.IsTrue(registrationPage.IsRegistrationSuccessful());
+            RegistrationPage.Open();
+            RegistrationPage.FillRegistrationForm("Vardenis", "Pavardenis", "VardenisP@example.com", "1234567890", "password123");
+            RegistrationPage.AcceptTermsAndConditions();
+            RegistrationPage.ClickRegistrationButton();
+            Assert.IsTrue(RegistrationPage.IsRegistrationSuccessful());
         }
-
     }
 }
-

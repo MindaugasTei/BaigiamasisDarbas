@@ -13,7 +13,7 @@ namespace Framework
             driver = new ChromeDriver(options);
         }
 
-        internal static IWebDriver GetDriver()
+        public static IWebDriver GetDriver()
         {
             return driver;
         }

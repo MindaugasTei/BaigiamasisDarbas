@@ -1,22 +1,18 @@
-﻿using System;
-using Framework;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using Tests.BaseTests;
 
 namespace Tests
 {
-    public class ProductFilterTest
+    public class ProductFilterTest : BaseTest
     {
         [Test]
         public void ProductFilter()
         {
-            Framework.Pages.HomePage homePage = new Framework.Pages.HomePage(driver);
-            Framework.Pages.ProductPage productPage = homePage.NavigateToProductPage();
-            productPage.ApplyProductFilter("Kauno parduotuvė");
-            productPage.ApplyProductFilter("Energijos šaltiniai");
-
-            Assert.IsTrue(productPage.AreFiltersApplied());
+            ProductPage.Open();
+            ProductPage.ApplyProductFilter("Kauno parduotuvė");
+            ProductPage.ApplyProductFilter("Energijos šaltiniai");
+            Assert.IsTrue(ProductPage.AreFiltersApplied());
         }
-
     }
 }
-
