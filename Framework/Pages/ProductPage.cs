@@ -1,50 +1,30 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
     public class ProductPage
     {
-        private IWebDriver driver;
-
-        public ProductPage(IWebDriver driver)
+        public static void Open()
         {
-            this.driver = driver;
+            Driver.OpenUrl("https://www.lemona.lt/visos-kategorijos");
         }
 
-        public void AddProductToCart()
+        public static void AddProductToCart()
         {
-            
             By addToCartButtonLocator = By.XPath("//*[@id=\"root\"]/main/div[1]/div/div/div[1]/div[3]/div[1]/div[3]/div/button[1]");
-
-           
             Common.ClickElement(addToCartButtonLocator);
         }
-    }
 
-        public CartPage GoToCart()
+        public static void ApplyProductFilter(string filter)
         {
-        
-      driver.Navigate().GoToUrl("https://www.lemona.lt/cart");
-
-        return new CartPage(driver);
+            string filterCheckboxLocator = $"//*[@id=\"desk-categories-{filter}\"]";
+            Common.ClickElement(By.XPath(filterCheckboxLocator));
         }
 
-        public void ApplyProductFilter(string filter)
+        public static bool AreFiltersApplied()
         {
-       
-        string filterCheckboxLocator = $"//*[@id=\"desk-categories-{filter}\"]";
-        Common.ClickElement(By.XPath(filterCheckboxLocator));
-    }
-
-        public bool AreFiltersApplied()
-        {
-            
             return true;
         }
-
-       
     }
-
 }
 

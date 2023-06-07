@@ -1,20 +1,12 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework
 {
     public class Common
     {
-        private static IWebDriver driver;
-
-        public static void Initialize(IWebDriver webDriver)
-        {
-            driver = webDriver;
-        }
-
         private static IWebElement GetElement(By locator)
         {
-            return driver.FindElement(locator);
+            return Driver.GetDriver().FindElement(locator);
         }
 
         internal static void ClickElement(By locator)
@@ -31,9 +23,6 @@ namespace Framework
         {
             return GetElement(locator).Text;
         }
-
-        
     }
-
 }
 

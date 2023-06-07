@@ -1,20 +1,16 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
-        public class RegistrationPage
+    public class RegistrationPage
+    {
+        public static void Open()
         {
-            private IWebDriver driver;
+            Driver.OpenUrl("https://www.lemona.lt/register");
+        }
 
-            public RegistrationPage(IWebDriver driver)
-            {
-                this.driver = driver;
-            }
-
-            public void FillRegistrationForm(string name, string lastName, string email, string phoneNumber, string password)
-            {
-            
+        public static void FillRegistrationForm(string name, string lastName, string email, string phoneNumber, string password)
+        {
             By nameInputLocator = By.XPath("//*[@id=\"root\"]/main/div[2]/form/fieldset[1]/div[1]/div[1]/input");
             By lastNameInputLocator = By.XPath("//*[@id=\"root\"]/main/div[2]/form/fieldset[1]/div[1]/div[2]/input");
             By emailInputLocator = By.XPath("//*[@id=\"root\"]/main/div[2]/form/fieldset[1]/div[2]/div[1]/input");
@@ -27,31 +23,23 @@ namespace Framework.Pages
             Common.SetText(phoneNumberInputLocator, phoneNumber);
             Common.SetText(passwordInputLocator, password);
         }
-    }
 
-            public void AcceptTermsAndConditions()
-            {
-        
-        By termsCheckboxLocator = By.XPath("//*[@id=\"agreement\"]");
-        Common.ClickElement(termsCheckboxLocator);
-    }
-
-            public void ClickRegistrationButton()
-            {
-
-        By registrationButtonLocator = By.XPath("//*[@id=\"root\"]/main/div[2]/form/div/div/div/button");
-        Common.ClickElement(registrationButtonLocator);
-    }
-
-            public bool IsRegistrationSuccessful()
-            {
-                
-                return true;
-            }
-
-            
+        public static void AcceptTermsAndConditions()
+        {
+            By termsCheckboxLocator = By.XPath("//*[@id=\"agreement\"]");
+            Common.ClickElement(termsCheckboxLocator);
         }
 
+        public static void ClickRegistrationButton()
+        {
+            By registrationButtonLocator = By.XPath("//*[@id=\"root\"]/main/div[2]/form/div/div/div/button");
+            Common.ClickElement(registrationButtonLocator);
+        }
+
+        public static bool IsRegistrationSuccessful()
+        {
+            return true;
+        }
     }
 }
 

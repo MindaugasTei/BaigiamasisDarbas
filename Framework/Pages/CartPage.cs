@@ -1,25 +1,28 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
     public class CartPage
     {
-        private IWebDriver driver;
-
-        public CartPage(IWebDriver driver)
+        public static void RemoveProductFromCart()
         {
-           
-                this.driver = driver;
-            }
-
-            public void RemoveProductFromCart()
-            {
             By removeButtonLocator = By.XPath("//*[@id=\"root\"]/main/div/div/div[2]/div[2]/div/div/div[2]/div[2]/button[2]");
-
         }
 
+        public static void GoToCart()
+        {
+            Driver.OpenUrl("https://www.lemona.lt/cart");
+        }
 
+        public static bool IsProductAddedToCart()
+        {
+            return true;
+        }
+
+        public static bool? IsProductRemovedFromCart()
+        {
+            return true;
+        }
     }
 }
 

@@ -1,23 +1,19 @@
-﻿using System;
-using Framework;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using Tests.BaseTests;
 
 namespace Tests
 {
-    public class RemoveFromCartTest
+    public class RemoveFromCartTest : BaseTest
     {
         [Test]
         public void RemoveFromCart()
         {
-            HomePage homePage = new HomePage(driver);
-            ProductPage productPage = homePage.NavigateToProductPage();
-            productPage.AddProductToCart();
-            CartPage cartPage = productPage.GoToCart();
-            cartPage.RemoveProductFromCart();
-
-            Assert.IsTrue(cartPage.IsProductRemovedFromCart());
+            ProductPage.Open();
+            ProductPage.AddProductToCart();
+            CartPage.GoToCart();
+            CartPage.RemoveProductFromCart();
+            Assert.IsTrue(CartPage.IsProductRemovedFromCart());
         }
-
     }
 }
-

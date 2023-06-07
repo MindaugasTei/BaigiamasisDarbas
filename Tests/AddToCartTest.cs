@@ -1,24 +1,18 @@
-﻿using System;
-using Framework;
-using Framework.Pages;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using Tests.BaseTests;
 
 namespace Tests
 {
-	public class AddToCartTest
+	public class AddToCartTest : BaseTest
 	{
         [Test]
         public void AddToCart()
         {
-            Framework.Pages.HomePage homePage = new HomePage(driver);
-            Framework.Pages.ProductPage productPage = homePage.NavigateToProductPage();
-            productPage.AddProductToCart();
-            Framework.Pages.CartPage cartPage = productPage.GoToCart();
-
-           
-            Assert.IsTrue(cartPage.IsProductAddedToCart());
+            ProductPage.Open();
+            ProductPage.AddProductToCart();
+            CartPage.GoToCart();
+            Assert.IsTrue(CartPage.IsProductAddedToCart());
         }
-
     }
 }
-
